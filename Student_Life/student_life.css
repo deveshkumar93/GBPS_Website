@@ -105,9 +105,10 @@ button {
 .desktop-nav>.nav-item>a {
     display: block;
     padding: 34px 0;
-    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: .04em;
+    letter-spacing: normal;
     position: relative;
 }
 
@@ -838,7 +839,10 @@ button {
     .mobile-nav a {
         padding: 15px 0;
         border-bottom: 1px solid var(--line);
-        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: normal;
     }
 
     .mobile-nav a:last-child {
@@ -1165,5 +1169,64 @@ button {
     .gallery-photo-large {
         height: 330px;
         min-height: 330px;
+    }
+}
+
+/* =========================================================
+   MOBILE DROPDOWN MENUS
+   Tap "About School" / "Academics" to open their sub-links.
+   (Hover does not work on phones, so we toggle a class instead.)
+   Added at the end of the file so it is easy to find.
+========================================================= */
+@media (max-width: 1000px) {
+
+    .mobile-nav .mobile-dropdown-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    .mobile-nav .mobile-dropdown-heading::after {
+        content: "+";
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .mobile-nav .dropdown.open .mobile-dropdown-heading::after {
+        content: "\2212";
+    }
+
+    .mobile-nav .dropdown .dropdown-menu {
+        position: static;
+        display: none;
+        min-width: 0;
+        padding: 0 0 8px 15px;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .mobile-nav .dropdown.open .dropdown-menu {
+        display: block;
+    }
+
+    .mobile-nav .dropdown-menu a {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+        white-space: normal;
+    }
+
+    .mobile-nav .dropdown-menu a:hover {
+        background: transparent;
     }
 }

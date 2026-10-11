@@ -44,8 +44,10 @@ button { font: inherit }
 .desktop-nav { display: flex; align-items: center; gap: 30px; margin-left: auto }
 .nav-item { position: relative }
 .nav-item > a {
-    display: block; padding: 10px 0; font-size: 13px; font-weight: 700;
-    letter-spacing: .5px; transition: opacity .25s
+    display: block; padding: 10px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px; font-weight: 700;
+    letter-spacing: normal; transition: opacity .25s
 }
 .nav-item > a:hover, .nav-item.active > a { opacity: .55 }
 .nav-item > a:after {
@@ -236,7 +238,7 @@ p { color: var(--muted) }
         background: var(--bg); border-top: 1px solid var(--line);
         position: relative; z-index: 1001
     }
-    .mobile-nav a { padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 14px }
+    .mobile-nav a { padding: 15px 0; border-bottom: 1px solid var(--line); font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: normal }
     .mobile-nav .mobile-fee {
         margin-top: 10px; padding: 15px 18px; background: var(--dark);
         color: #fff; text-align: center

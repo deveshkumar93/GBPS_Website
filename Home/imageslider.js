@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileNav.classList.remove("open");
         menuButton.classList.remove("active");
 
+        /* Also close any open dropdown sub-menu */
+        mobileNav.querySelectorAll(".dropdown.open").forEach(function (dropdown) {
+            dropdown.classList.remove("open");
+        });
+
         menuButton.setAttribute("aria-expanded", "false");
         menuButton.setAttribute("aria-label", "Open menu");
     }
@@ -37,11 +42,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /* Close menu after clicking any mobile link */
+        /* =========================================================
+           MOBILE DROPDOWN SUB-MENUS
+           Tapping "About School" / "Academics" opens their links
+           instead of closing the whole menu or jumping to "#".
+        ========================================================= */
+
+        mobileNav.querySelectorAll(".mobile-dropdown-heading").forEach(function (heading) {
+
+            heading.addEventListener("click", function (event) {
+
+                event.preventDefault();
+
+                const dropdown = heading.closest(".dropdown");
+
+                if (!dropdown) return;
+
+                const isOpen = dropdown.classList.toggle("open");
+
+                heading.setAttribute("aria-expanded", String(isOpen));
+
+            });
+
+        });
+
+
+        /* Close menu after clicking any mobile link
+           (but keep dropdown headings from closing the menu) */
         mobileNav.querySelectorAll("a").forEach(function (link) {
 
             link.addEventListener("click", function () {
+
+                if (link.classList.contains("mobile-dropdown-heading")) return;
+
                 closeMobileMenu();
+
             });
 
         });

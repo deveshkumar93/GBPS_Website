@@ -143,10 +143,11 @@ img {
 .nav-item > a {
     position: relative;
     padding: 34px 0;
-    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: normal;
+    text-transform: none;
     text-decoration: none;
 }
 
@@ -196,11 +197,13 @@ img {
 
 .dropdown-menu a {
     display: block;
-    padding: 10px 18px;
+    padding: 12px;
     color: var(--white);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
     text-decoration: none;
 }
 
@@ -747,11 +750,12 @@ img {
         display: block;
         padding: 16px 6%;
         border-top: 1px solid var(--line);
-        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
         font-weight: 600;
-        letter-spacing: 0.08em;
+        letter-spacing: normal;
         text-decoration: none;
-        text-transform: uppercase;
+        text-transform: none;
     }
 
     .mobile-nav .mobile-fee {
@@ -918,5 +922,77 @@ img {
 
     .curriculum-hero {
         min-height: 560px;
+    }
+}
+
+/* =========================================================
+   MOBILE DROPDOWN MENUS
+   Tap "Academics" to open its sub-links.
+   (Hover does not work on phones, so we toggle a class instead.)
+   Added at the end of the file so it is easy to find.
+========================================================= */
+@media (max-width: 1000px) {
+
+    .mobile-nav.open {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .mobile-nav .mobile-dropdown-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 6%;
+        cursor: pointer;
+    }
+
+    .mobile-nav .mobile-dropdown-heading::after {
+        content: "+";
+        position: static;
+        width: auto;
+        height: auto;
+        bottom: auto;
+        background: none;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .mobile-nav .dropdown.open .mobile-dropdown-heading::after {
+        content: "\2212";
+    }
+
+    .mobile-nav .dropdown .dropdown-menu {
+        position: static;
+        display: none;
+        min-width: 0;
+        width: 100%;
+        padding: 0 0 8px;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+    }
+
+    .mobile-nav .dropdown.open .dropdown-menu {
+        display: block;
+    }
+
+    .mobile-nav .dropdown-menu a {
+        padding: 12px 6% 12px 12%;
+        border-top: 1px solid var(--line);
+        color: inherit;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: normal;
+        text-transform: none;
+    }
+
+    .mobile-nav .dropdown-menu a:hover {
+        background: transparent;
     }
 }

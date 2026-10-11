@@ -103,9 +103,10 @@ button {
 .nav-item>a {
     display: block;
     padding: 10px 0;
-    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: .5px;
+    letter-spacing: normal;
     transition: opacity .25s
 }
 
@@ -517,7 +518,10 @@ p {
     .mobile-nav a {
         padding: 15px 0;
         border-bottom: 1px solid var(--line);
-        font-size: 14px
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: normal
     }
 
     .mobile-nav .mobile-fee {

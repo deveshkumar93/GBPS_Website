@@ -92,7 +92,10 @@ img {
     background:var(--dark);
     transition:.25s;
 }
-.nav-item a:hover:after,.nav-item.active a:after {
+.dropdown-menu a:after {
+    display:none;
+}
+.nav-item a:hover:after,.nav-item.active>a:after {
     width:100%;
 }
 .header-actions {
@@ -533,9 +536,10 @@ img {
         transition:max-height .35s,opacity .25s;
     }
     .mobile-nav.open {
-        max-height:500px;
-        opacity:1;
-        pointer-events:auto;
+        max-height: 80vh;
+        overflow-y: auto;
+        opacity: 1;
+        pointer-events: auto;
     }
     .mobile-nav a {
         color:#fff;
@@ -701,5 +705,116 @@ img {
     }
     .footer-main {
         grid-template-columns:1fr;
+    }
+}
+
+/* =========================================================
+   NAV FONT — same font as the Home page
+   (Arial, 14px / bold on desktop; 15px / semibold on mobile)
+   Added at the end of the file so it is easy to find.
+========================================================= */
+.desktop-nav {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+.nav-item a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+}
+
+/* =========================================================
+   DESKTOP DROPDOWN (About School / Academics)
+   The dropdown markup existed but had no styling, so the
+   sub-links were showing inline. Now they open on hover,
+   exactly like the Home page.
+========================================================= */
+.nav-item {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    min-width: 200px;
+    background: var(--paper);
+    padding: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: .25s ease;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 12px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.dropdown-menu a:hover {
+    background: #f0eee7;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   MOBILE DROPDOWN SUB-MENUS
+   Tapping "About School" / "Academics" opens their links.
+========================================================= */
+@media(max-width:1000px) {
+    .mobile-nav a {
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: normal;
+        text-transform: none;
+    }
+    .mobile-nav .mobile-dropdown-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+    .mobile-nav .mobile-dropdown-heading::after {
+        content: "+";
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1;
+    }
+    .mobile-nav .dropdown.open .mobile-dropdown-heading::after {
+        content: "\2212";
+    }
+    .mobile-nav .dropdown .dropdown-menu {
+        position: static;
+        display: none;
+        min-width: 0;
+        padding: 0 0 8px 15px;
+        background: transparent;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+    .mobile-nav .dropdown.open .dropdown-menu {
+        display: block;
+    }
+    .mobile-nav .dropdown-menu a {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .15);
+        font-size: 14px;
+        font-weight: 400;
+        color: #fff;
+    }
+    .mobile-nav .dropdown-menu a:hover {
+        background: transparent;
     }
 }
